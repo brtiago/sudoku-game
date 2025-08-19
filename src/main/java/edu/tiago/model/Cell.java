@@ -15,13 +15,13 @@ public abstract class Cell {
         this.value = value;
     }
 
-    private void validateCoordinates(int row, int col) {
+    private static void validateCoordinates(int row, int col) {
         if(row < 0 || row > 8 || col < 0 || col > 8) {
             throw new IllegalArgumentException("Invalid coordinates: (" + row + ", " + col + ")");
         }
     }
 
-    protected boolean validateValue(int value) {
+    protected static boolean validateValue(int value) {
         if(value < 0 || value > 9) {
             throw new IllegalArgumentException("Value must be between 0-9!");
         }
@@ -38,6 +38,15 @@ public abstract class Cell {
     }
 
     public abstract boolean isEditable();
+
+    public static Cell createCell(int row, int col, int value, boolean isFixed) {
+        validateCoordinates(row, col);
+        validateValue(value);
+
+        return isFixed ?
+                new FixedCell(row, col, value) :
+                new EditableCell(row, col, value);
+    }
 
     @Override
     public boolean equals(Object obj) {

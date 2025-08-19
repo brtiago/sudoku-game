@@ -1,8 +1,8 @@
 package edu.tiago.model;
 
 public class EditableCell extends Cell {
-    public EditableCell(int row, int col) {
-        super(row, col, 0);
+    public EditableCell(int row, int col, int value) {
+        super(row, col, value);
     }
 
     @Override
