@@ -40,7 +40,7 @@ public class Board {
     }
 
     public Cell getCell(int row, int col) {
-        if(row < 0 || row >= SIZE || col < 0 || col > SIZE) {
+        if(row < 0 || row >= SIZE || col < 0 || col >= SIZE) {
             throw new IllegalArgumentException("Posição inválida!");
         }
         return grid[row][col];
